@@ -10,7 +10,7 @@
     
     
     
-    <title>archive_a | Love&amp;Peace</title>
+    <title>Love&amp;Peace</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -107,7 +107,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/archives">
                         <i class="fa fa-archive"></i>归档
                     </a>
@@ -150,19 +150,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-archive">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://example.com">Love&amp;Peace</a>
         >
-        <span>归档</span>
+        <span></span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/archives">归档</a>
+                <a href="/2021/01/14/1.SDIO%E8%B0%83%E8%AF%95%E6%8C%87%E5%8D%97/"></a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2021-01-14
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -170,35 +178,33 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/archives">归档</a>
+                    <a href="/2021/01/14/1.SDIO%E8%B0%83%E8%AF%95%E6%8C%87%E5%8D%97/"></a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2021-01-14
+            </p>
+            <p>
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        
-        
-            <h1 style="font-size: 24px; margin-top: 40px;">2021年</h1>
-            
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-             
-             
-                        <a href="/2021/01/14/1.SDIO%E8%B0%83%E8%AF%95%E6%8C%87%E5%8D%97/"></a>
-                        <br>
-            
-             
-                        <a href="/2021/01/13/test-my-site/">test_my_site</a>
-                        <br>
-            
-             
-                        <a href="/2021/01/13/hello-world/">Hello World</a>
-                        <br>
-            
-                    </div>
-        
+    <div class="content-article">
+        <h1 id="1-SDIO调试指南"><a href="#1-SDIO调试指南" class="headerlink" title="1.SDIO调试指南"></a>1.SDIO调试指南</h1><p>@(我的第一个笔记本)[SDIO, Linux, Wi-Fi]</p>
+<p><strong>SDIO</strong>Under Linux, SDIO parts are bound to the mmc bus.</p>
+<p>Before using a Wi-Fi part connected to the SDIO bus of a Linux system, it is necessary that the system detects the HW on the bus.<br>When detection succeeds, the kernel has retrieved the VID/PID for the device.<br>Looking for a driver matching the VID/PID is only possible if the VID/PID has been retrieved from the device.<br>As as consequence, device tree changes related to your device have no effect until SDIO detection is OK.<br>Linux systems will try to detect SDIO parts on the bus at boot, and every time the mmc bus is bound. Unbinding/binding the mmc bus is what we will use to trace mmc messages related to SDIO detection.</p>
+<p>1 Retrieving the current device tree<br>2 Checking which mmc bus is used for SDIO<br>3 Making sure SDIO detection is enabled in the device tree<br>4 Checking the mmc bus commands during the SDIO detection phase<br>5 Checking the SDIO detection result</p>
+<ul>
+<li><strong>功能丰富</strong> ：支持高亮代码块、<em>LaTeX</em> 公式、流程图，本地图片以及附件上传，甚至截图粘贴，工作学习好帮手；</li>
+<li><strong>得心应手</strong> ：简洁高效的编辑器，提供[桌面客户端][1]以及[离线Chrome App][2]，支持移动端 Web；</li>
+<li><strong>深度整合</strong> ：支持选择笔记本和添加标签，支持从印象笔记跳转编辑，轻松管理。</li>
+</ul>
+
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -316,17 +322,17 @@
 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2021/01/14/1.SDIO%E8%B0%83%E8%AF%95%E6%8C%87%E5%8D%97/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2021/01/14/1.SDIO%E8%B0%83%E8%AF%95%E6%8C%87%E5%8D%97/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2021/01/14/1.SDIO%E8%B0%83%E8%AF%95%E6%8C%87%E5%8D%97/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
