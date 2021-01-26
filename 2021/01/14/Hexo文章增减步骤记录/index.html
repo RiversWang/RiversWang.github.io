@@ -11,7 +11,7 @@
 
     <title>
         
-        SDIO调试指南 - Rivers的博客 | Rivers&#39;s Blog
+        Hexo文章增减步骤记录 - Rivers的博客 | Rivers&#39;s Blog
         
     </title>
 
@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-SDIO%E8%B0%83%E8%AF%95%E6%8C%87%E5%8D%97"><span class="toc-text">1.SDIO调试指南</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo%E6%96%87%E7%AB%A0%E5%A2%9E%E5%87%8F%E6%AD%A5%E9%AA%A4%E8%AE%B0%E5%BD%95"><span class="toc-text">Hexo文章增减步骤记录</span></a></li></ol>
 </div>
     
 </div>
@@ -124,7 +124,7 @@
 
 <div class="post-container">
     <div class="post-title">
-        SDIO调试指南
+        Hexo文章增减步骤记录
     </div>
 
     <div class="post-meta">
@@ -132,10 +132,10 @@
         
         <span class="attr">标签：/
         
-        <a class="tag" href="/tags/#SDIO" title="SDIO">SDIO</a>
+        <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
         <span>/</span>
         
-        <a class="tag" href="/tags/#WiFi" title="WiFi">WiFi</a>
+        <a class="tag" href="/tags/#blog" title="blog">blog</a>
         <span>/</span>
         
         
@@ -145,14 +145,13 @@
 </span>
     </div>
     <div class="post-content ">
-        <h1 id="1-SDIO调试指南"><a href="#1-SDIO调试指南" class="headerlink" title="1.SDIO调试指南"></a>1.SDIO调试指南</h1><p>@(我的第一个笔记本)[SDIO, Linux, Wi-Fi]</p>
-<p><strong>SDIO</strong>Under Linux, SDIO parts are bound to the mmc bus.</p>
-<p>Before using a Wi-Fi part connected to the SDIO bus of a Linux system, it is necessary that the system detects the HW on the bus.<br>When detection succeeds, the kernel has retrieved the VID/PID for the device.<br>Looking for a driver matching the VID/PID is only possible if the VID/PID has been retrieved from the device.<br>As as consequence, device tree changes related to your device have no effect until SDIO detection is OK.<br>Linux systems will try to detect SDIO parts on the bus at boot, and every time the mmc bus is bound. Unbinding/binding the mmc bus is what we will use to trace mmc messages related to SDIO detection.</p>
-<p>1 Retrieving the current device tree<br>2 Checking which mmc bus is used for SDIO<br>3 Making sure SDIO detection is enabled in the device tree<br>4 Checking the mmc bus commands during the SDIO detection phase<br>5 Checking the SDIO detection result</p>
+        <h1 id="Hexo文章增减步骤记录"><a href="#Hexo文章增减步骤记录" class="headerlink" title="Hexo文章增减步骤记录"></a>Hexo文章增减步骤记录</h1><p>@(Rivers Blog)[Hexo, Windows, Markdown]</p>
+<p><strong>Hexo Blog</strong>最近刚刚开始使用Hexo，记录一下增加和删除文章的操作</p>
 <ul>
-<li><strong>功能丰富</strong> ：支持高亮代码块、<em>LaTeX</em> 公式、流程图，本地图片以及附件上传，甚至截图粘贴，工作学习好帮手；</li>
-<li><strong>得心应手</strong> ：简洁高效的编辑器，提供[桌面客户端][1]以及[离线Chrome App][2]，支持移动端 Web；</li>
-<li><strong>深度整合</strong> ：支持选择笔记本和添加标签，支持从印象笔记跳转编辑，轻松管理。</li>
+<li><p><strong>添加文章</strong> ：<br>1 在blog目录下运行bash shell，然后执行hexo -n “title”，在_post目录下会生成title.md<br>2 在markdown下编辑title.md，编辑结束，保存<br>3 hexo clean<br>4 hexo g<br>5 hexo d</p>
+</li>
+<li><p><strong>删除文章</strong> ：<br>1 删除_post目录下的title.md<br>3 hexo clean<br>4 hexo g<br>5 hexo d -g</p>
+</li>
 </ul>
 
         
