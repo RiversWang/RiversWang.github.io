@@ -155,7 +155,15 @@
 <li>数据保证不会出错</li>
 <li>免费以及开源</li>
 </ul>
-<h2 id="二、git基本操作"><a href="#二、git基本操作" class="headerlink" title="二、git基本操作"></a>二、git基本操作</h2><p>work alone<br>$git init myproject<br>$cd myproject<br>$git add .<br>$git commit -m”Importing all the code”</p>
+<h2 id="二、git基本操作"><a href="#二、git基本操作" class="headerlink" title="二、git基本操作"></a>二、git基本操作</h2><p>###1 远程对github上主版本修改：<br>$git clone <a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#104;&#x75;&#98;&#46;&#x63;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#104;&#x75;&#98;&#46;&#x63;&#111;&#109;</a>:RiversWang/updata-via-network.git</p>
+<p>$cd updata-via-network/</p>
+<p>$ touch test_git_control.c</p>
+<p>$ git add test_git_control.c#add file to staging区域</p>
+<p>$ git commit test_git_control.c -m”test to commit message~”#提交，产生版本记录，注意代码依然在本地</p>
+<p>$vim README.md修改updata-via-network中的README.md文件内容</p>
+<p>$git commit -m”modified README.md”#提交，产生版本记录，注意代码依然在本地</p>
+<p>$git push origin#将修改提交到github上</p>
+<p>###2 远程对github上分支版本修改：</p>
 
         
             <div class="donate-container">
