@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="冷静的博客">
+    <meta name="keyword"  content="远离浮躁，安心做事">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        podman - Rivers的博客 | Rivers&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The palest ink is better than the best memory </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/face.jpg" />
+        </div>
+        <div class="name">
+            <i>Rivers 权</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Container-vs-VMs"><span class="toc-text">1.Container vs VMs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-ADS-podman-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-text">2.ADS podman 常用指令:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-uid%E5%92%8Cgid%E4%B9%8B%E9%97%B4%E7%9A%84%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB%EF%BC%9A"><span class="toc-text">3.uid和gid之间的映射关系：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%9E%84%E5%BB%BA%E6%9C%AC%E5%9C%B0container%E7%9A%84%E9%95%9C%E5%83%8F"><span class="toc-text">4.构建本地container的镜像</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The palest ink is better than the best memory </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        podman
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-05-08 18:02:47</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="1-Container-vs-VMs"><a href="#1-Container-vs-VMs" class="headerlink" title="1.Container vs VMs"></a>1.Container vs VMs</h1><p>containers比VMs更加轻量化，简单化，和宿主共享内核,低资源占用，可以在不同开发环境之间便携转换。containers适合配置开发环境，便于分享，容易获取。多个开发者不需要多次配置开发环境。</p>
+<p>VMs不适合在不同平台间共同使用</p>
+<p>而containers+linux内核，方便在所有linux平台上使用</p>
+<p>containers并不是运行在dockers上，它是运行在宿主linux 内核上。</p>
+<h1 id="2-ADS-podman-常用指令"><a href="#2-ADS-podman-常用指令" class="headerlink" title="2.ADS podman 常用指令:"></a>2.ADS podman 常用指令:</h1><ol>
+<li><p>alias subuildah=&quot;sudo /ecs/utils/container/bin/subuildah&quot;</p>
+</li>
+<li><p>alias supodman=&quot;sudo /ecs/utils/container/bin/supodman&quot;（创建alisa）</p>
+</li>
+<li><p>supodman ps -a (查看所有容器)</p>
+</li>
+<li><p>subuildah bud -t ubuntu-qsdk(新建image)</p>
+</li>
+<li><p>sudo /ecs/utils/container/bin/supodman run -u 0:0 –name datetime-test datetime（从image运行容器）</p>
+</li>
+<li><p>supodman rm datetime-test（删除容器）</p>
+</li>
+<li><p>supodman rmi localhost/datetime docker.io/library/busybox（删除镜像）</p>
+</li>
+<li><p>supodman images（查看所有镜像）</p>
+</li>
+<li><p>supodman run -it -v /nobackup/quahe/sdk/qca-networking-2020-spf-11-3_qca_oem-es1:/home/quahe/qsdk –name magnum ubuntu-qsdk</p>
+</li>
+</ol>
+<h1 id="3-uid和gid之间的映射关系："><a href="#3-uid和gid之间的映射关系：" class="headerlink" title="3.uid和gid之间的映射关系："></a>3.uid和gid之间的映射关系：</h1><p>在容器内由root执行的进程，在外部看来是由uid执行的。</p>
+<h1 id="4-构建本地container的镜像"><a href="#4-构建本地container的镜像" class="headerlink" title="4.构建本地container的镜像"></a>4.构建本地container的镜像</h1><p>（1）docker构建镜像，主要是Dockerfile来配置的，这里可以配置环境，即所有需要的安装包，可以统一下载。</p>
+<p>Dockfile如下：</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#第一行表明采用的系统</span></span><br><span class="line"></span><br><span class="line">FROM ubuntu:<span class="number">16.04</span></span><br><span class="line"></span><br><span class="line">ENV DEBIAN<span class="string">\_FRONTEND</span> noninteractive</span><br><span class="line"></span><br><span class="line"><span class="comment">#ADD添加文件</span></span><br><span class="line"></span><br><span class="line">COPY Dockerfile /boot</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install dependencies.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Need to run &amp;#39;dpkg-reconfigure locales&amp;#39; and &amp;#39;locale-gen en\_US.UTF-8&amp;#39; when at root</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#RUN后面是执行的操作</span></span><br><span class="line"></span><br><span class="line">RUN apt-get update</span><br><span class="line"></span><br><span class="line">RUN apt-get install -y --<span class="literal">no</span>-install-recommends <span class="string">\</span></span><br><span class="line"></span><br><span class="line">sudo locales debconf build-essential libffi-dev libssl-dev pciutils <span class="string">\</span></span><br><span class="line"></span><br><span class="line">python-pip python-dev python-pexpect python-serial <span class="string">\</span></span><br><span class="line"></span><br><span class="line">python-distribute python-scapy python-smbus <span class="string">\</span></span><br><span class="line"></span><br><span class="line">cpio gawk curl wget git-core coreutils <span class="string">\</span></span><br><span class="line"></span><br><span class="line">diffstat unzip texinfo gcc-multilib <span class="string">\</span></span><br><span class="line"></span><br><span class="line">chrpath socat libsdl1.<span class="number">2</span>-dev xterm vim openssh-client <span class="string">\</span></span><br><span class="line"></span><br><span class="line">u-boot-tools device-tree-compiler libfdt-dev mtd-utils <span class="string">\</span></span><br><span class="line"></span><br><span class="line">gcc g++ binutils patch bzip2 flex make gettext <span class="string">\</span></span><br><span class="line"></span><br><span class="line">pkg-config unzip zlib1g-dev libc6-dev subversion libncurses5-dev gawk <span class="string">\</span></span><br><span class="line"></span><br><span class="line">sharutils curl libxml-parser-perl ocaml-nox ocaml-nox ocaml<span class="string">\</span></span><br><span class="line"></span><br><span class="line">ocaml-findlib <span class="string">\</span></span><br><span class="line"></span><br><span class="line">libpcre3-dev binutils-gold python-yaml &amp;amp;&amp;amp; <span class="string">\</span></span><br><span class="line"></span><br><span class="line">echo &amp;quot;America/Los<span class="string">\_angles&amp;quot;</span> <span class="string">\&amp;gt;</span> /etc/timezone &amp;amp;&amp;amp; <span class="string">\</span></span><br><span class="line"></span><br><span class="line">echo &amp;<span class="comment">#39;LANG=&amp;quot;en\_US.UTF-8&amp;quot;&amp;#39;\&amp;gt;/etc/default/locale &amp;amp;&amp;amp; \</span></span><br><span class="line"></span><br><span class="line">delgroup floppy &amp;amp;&amp;amp; addgroup --gid <span class="number">25</span> eng &amp;amp;&amp;amp; add<span class="string">\_users</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dpkg-reconfigure.sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#ENV设置环境变量</span></span><br><span class="line"></span><br><span class="line">ENV LANG en<span class="string">\_US.UTF-8</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#cmd设置启动参数</span></span><br><span class="line"></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></table></figure>
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/何Rivers">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/RiversWang">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a target="_blank" rel="noopener" href="https://zhihu.com/people/he-quan-qi">知乎</a></span>
+        <span>/</span>
+        
+        <span><a href="rivers.sparksfly@gamil.com">Gmail</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://riverswang.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

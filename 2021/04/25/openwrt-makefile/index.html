@@ -11,7 +11,7 @@
 
     <title>
         
-        Rivers的博客 | Rivers&#39;s Blog
+        openwrt_makefile - Rivers的博客 | Rivers&#39;s Blog
         
     </title>
 
@@ -57,7 +57,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -92,6 +92,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo%E6%96%87%E7%AB%A0%E5%A2%9E%E5%87%8F%E6%AD%A5%E9%AA%A4%E8%AE%B0%E5%BD%95"><span class="toc-text">Hexo文章增减步骤记录</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -116,86 +120,66 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 576px">
-    
-    <div class="post-preview">
-        <div class="post-time">2021-01-26</div>
-        <div class="post-info">
-            <a href="/2021/01/26/python/">
-                <h3>
-                    Python
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#python" title="python">python</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        openwrt_makefile
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2021-01-14</div>
-        <div class="post-info">
-            <a href="/2021/01/14/SDIO/">
-                <h3>
-                    SDIO设备调试指南
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#SDIO" title="SDIO">SDIO</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#WiFi" title="WiFi">WiFi</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-04-25 23:18:15</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2021-01-14</div>
-        <div class="post-info">
-            <a href="/2021/01/14/Hexo文章增减步骤记录/">
-                <h3>
-                    Hexo文章增减步骤记录
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#blog" title="blog">blog</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-</div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/">&larr; Newer Posts</a>
-    </li>
-    
-    
+    <div class="post-content ">
+        <h1 id="Hexo文章增减步骤记录"><a href="#Hexo文章增减步骤记录" class="headerlink" title="Hexo文章增减步骤记录"></a>Hexo文章增减步骤记录</h1><p>@(Rivers Blog)[openWRT, Makefile]<br><strong>openWRT Blog</strong>最近刚刚开始使用openWRT，记录一下Makefile的框架和流程</p>
+<ul>
+<li>**Makefile的根目录介绍<br>根目录有：</li>
 </ul>
+<p>*tools–包含去fetch编译镜像的所有工具的指令<br>*toolchain–包含所有的fetch内核headers、c标准库、编译器、debuggers。如果你增加一种新的architecture，那么你需要在这加上一个新的配置文件<br>*target–生成镜像过程和内核编译过程的编译指令<br>*package–对于所有软件安装包的makefiles和patches。和其他的makefile不一样，openWRT有自己的语法。openWRT会定义关于安装包的meta information，来指定：在哪下载安装包、如何编译安装包、在哪install可执行文件等等。<br>*include–<br>*scripts–对openwrt的安装包进行管理的perl脚本<br>*dl–用户态的packages tarballs下载的地方<br>*build_dir所有用户态工具被交叉编译的地方<br>*feeds–<br>*bin–生成镜像的放置地方  </p>
+<ul>
+<li><p><strong>openWRT编译镜像的流程</strong> ：<br>（1）下载所有的交叉编译工具和内核头文件等<br>（2）建立staging_dir文件夹，生成交叉编译工具<br>（3）建立dl文件夹，下载所有安装包<br>（4）建立build_dir文件夹，编译所有用户态工具<br>（5）建立</p>
+</li>
+<li><p><strong>Makefile流程介绍</strong> ：<br>在$(topdir)/Makefile里面，部分代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果没有在make指令中指定，那么目标就是Makefile文件从上向下第一个文件。可以看出，第一次执行make，目标是world，会进入到第一个分支，包含debug.mk， depends.mk，toplevel.mk。具体来说，在toplevel.mk中由“%::”指定了make的目标<br>rules.mk定义了一些编译基本的定义（工具链等），还定义了几种“函数”：  </p>
+<pre><code>  locked（在flock下执行指令，类似于互斥锁）  
+  file_copy（递归的复制文件夹）  
+  ext(获取文件的扩展符，也就是尾缀)  </code></pre>
+<p>debug.mk定义了debug相关变量和“函数”<br>verbose.mk定义了$(SUBMAKE)、$(SILENT)、$(NO_TRACE_MAKE)<br>version.mk定义了版本号<br>toplevel.mk定义了任务目标；</p>
+<pre><code>  $(NO_TRACE_MAKE) -r -s prereq
+  $(SUBMAKE) -r $@</code></pre>
+</li>
+</ul>
+<ul>
+<li><strong>删除文章</strong></li>
+</ul>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
 
     </div>
 </div>
@@ -265,7 +249,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
@@ -273,6 +257,25 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://riverswang.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
